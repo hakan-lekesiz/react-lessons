@@ -1,6 +1,10 @@
 import { Outlet, Link } from "react-router-dom";
+import { useState } from "react";
 
 const Layout = () => {
+    const [isUserLogin, setIsUserLogin] = useState(false);
+    console.log(isUserLogin);
+
     return (
         <>
             <header>
@@ -18,6 +22,15 @@ const Layout = () => {
                         </li>
                     </ul>
                 </nav>
+
+                {
+                    !isUserLogin &&
+                    <button onClick={() => setIsUserLogin(true)}>Giriş Yap</button>
+                }
+                {
+                    isUserLogin &&
+                    <div>Kullanıcı Adı</div>
+                }
             </header>
 
             <main>

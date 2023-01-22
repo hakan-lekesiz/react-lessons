@@ -1,3 +1,4 @@
+
 import Destructuring from "../components/destructuring";
 import Map from "../components/map";
 import SpreadOperator from "../components/spreadOperator";
@@ -44,8 +45,8 @@ const Home = () => {
 
     return (
         <>
-            <button onClick={(ev) => shoot(ev)}>Take the Shot!</button>
-
+            {/* <button onClick={(ev) => shoot(ev)}>Take the Shot!</button>
+             */}
             <Map />
             <Destructuring />
             <SpreadOperator />
@@ -53,6 +54,10 @@ const Home = () => {
             <MyCar model="Corsa" />
             <Garage cars={cars} />
 
+            <div>
+                Toplam {products.length} ürün listeleniyor
+            </div>
+            
             <div style={{ display: "flex", gap: "12px" }}>
                 {
                     products.map((product, index) => (

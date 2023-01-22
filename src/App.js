@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import About from "./pages/About";
@@ -9,6 +8,7 @@ import NoPage from "./pages/NoPage";
 
 const App = () => {
 
+ 
   return (
     <BrowserRouter>
       <Routes>

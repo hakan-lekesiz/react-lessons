@@ -33,3 +33,22 @@ body {
     }
 
 }
+
+
+.favorite-color {
+    background: yellow;
+    padding: 16px;
+
+    >div {
+        display: flex;
+        gap: 12px;
+
+        button {
+            background: red;
+            color: #FFF;
+            padding: 8px;
+            cursor: pointer;
+
+        }
+    }
+}
