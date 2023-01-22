@@ -2,7 +2,7 @@ import Map from "./map";
 
 
 
-function SpreadOperator() {
+const SpreadOperator = () => {
     const numbersOne = [1, 2, 3];
     const numbersTwo = [4, 5, 6];
     const numbersCombined = [...numbersOne, ...numbersTwo];
@@ -36,7 +36,7 @@ function SpreadOperator() {
         <div style={{ background: "blue" }}>
             {
                 numbersCombined.map((item) => (
-                    <span>{item}</span>
+                    <span key={"numbersCombined_"+item}>{item}</span>
                 ))
             }
 

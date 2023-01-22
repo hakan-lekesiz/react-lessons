@@ -17,7 +17,7 @@ function calculate(a, b) {
     //return [a + b, a - b, a * b, a / b];
 }
 
-function Destructuring() {
+const Destructuring = () => {
     const arac = {
         brand: 'Ford',
         model: 'Mustang',

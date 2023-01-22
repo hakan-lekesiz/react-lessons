@@ -1,7 +1,7 @@
 import { calculate } from "./destructuring";
 
 
-function Turnary() {
+const Turnary = () => {
     const age = 15;
 
     const [add, subtract, multiply, divide] = age < 18 ? calculate(20, 5) : calculate(100, 5);

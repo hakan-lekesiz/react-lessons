@@ -1,6 +1,8 @@
 
 //function Card({ details:{title, desc, price, img} }) {
-function Card(props) {
+//function Card(props) {
+const Card = (props) => {
+
     const { title, desc, price, img } = props.details;
 
     return (
