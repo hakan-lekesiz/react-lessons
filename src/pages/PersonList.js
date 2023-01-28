@@ -2,19 +2,16 @@ import { useState } from "react";
 
 
 const PersonList = () => {
-
-    const [sortname, setSortname] = useState("");
-    const [sortlastname, setSortlastname] = useState("");
-    const [sortincome, setSortincome] = useState(""); // "", "asc", "desc"  
-    const [sortage, setSortage] = useState("");
-
     const [list, setList] = useState([
         { name: "Hakan", lastname: "Lekesiz", income: 5000, age: 33 },
         { name: "Yusuf", lastname: "Karaca", income: 15000, age: 21 },
         { name: "Evren", lastname: "Ünal", income: 50000, age: 25 },
         { name: "Efşannur", lastname: "Bulaçibaşı", income: 8500, age: 22 }
     ]);
-
+    const [sortname, setSortname] = useState("");
+    const [sortlastname, setSortlastname] = useState("");
+    const [sortincome, setSortincome] = useState(""); // "", "asc", "desc"  
+    const [sortage, setSortage] = useState("");
 
     //number değerleri sort ediyor
     const sortNumber = (param) => {
