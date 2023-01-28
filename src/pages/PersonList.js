@@ -15,7 +15,6 @@ const PersonList = () => {
 
     //number değerleri sort ediyor
     const sortNumber = (param) => {
-        debugger
         let sortedList = [...list].sort((a, b) => b[param] - a[param]);
 
         if (param === "income") {
@@ -29,6 +28,9 @@ const PersonList = () => {
                 setSortincome("desc");
             }
             setList(sortincome === "desc" ? sortedList : sortedList.reverse());
+            setSortname("");
+            setSortlastname("");
+            setSortage("");
         }
         else if (param === "age") {
             if (sortage === "") {
@@ -41,21 +43,76 @@ const PersonList = () => {
                 setSortage("desc");
             }
             setList(sortage === "desc" ? sortedList : sortedList.reverse());
+            setSortname("");
+            setSortlastname("");
+            setSortincome("");
         }
     };
 
     //string değerleri sort ediyor
     const sortString = (param) => {
+
+        //A'dan Z'ye bir sıralama yapıldı
         let sortedList = [...list].sort((a, b) => a[param] > b[param] ? 1 : b[param] > a[param] ? -1 : 0);
-        setList(sortedList);
+
+        //parametreler kotrol edliyor
+        if (param === "name") {
+            //şuanki sort name durumu desc ise A'dan Z'ye yapılan sıralam ile listeyi güncelleiyor değilse tersine çevirip listeyi güncelleiyor
+            setList(sortname === "desc" ? sortedList : sortedList.reverse());
+
+            //name'in sort durumu kontrol edilerek yeni durum belirleniyor
+            //yani "" ise desc yapılıyor
+            //desc ise asc yapılıyor
+            //asc ise desc yapılıyor
+
+            //bu satır async çalışıyor
+            console.log(sortname);//örneğin console log yapıldığında "" geliyorsa
+            (sortname === "desc") ? setSortname("asc") : setSortname("desc");
+            console.log(sortname);//bu satırda da console log yapıldığında "" gelir
+
+            setSortlastname("");
+            setSortincome("");
+            setSortage("");
+
+
+        }
+        else if (param === "lastname") {
+            sortlastname === "desc" ? setSortlastname("asc") : setSortlastname("desc");
+            setList(sortlastname === "desc" ? sortedList : sortedList.reverse());
+            setSortname("");
+            setSortincome("");
+            setSortage("");
+        }
+
     };
 
     return (
         <>
             <div className="per-list">
                 <ul>
-                    <li onClick={() => sortString("name")}>name</li>
-                    <li onClick={() => sortString("lastname")}>lastname</li>
+                    <li onClick={() => sortString("name")}>name
+                        {
+                            sortname === "desc" &&
+                            <span className="desc"></span>
+                        }
+
+                        {
+                            sortname === "asc" &&
+                            <span className="asc"></span>
+                        }
+
+                    </li>
+                    <li onClick={() => sortString("lastname")}>lastname
+                        {
+                            sortlastname === "desc" &&
+                            <span className="desc"></span>
+                        }
+
+                        {
+                            sortlastname === "asc" &&
+                            <span className="asc"></span>
+                        }
+                    </li>
                     <li onClick={() => sortNumber("income")}>income
                         {
                             sortincome === "desc" &&
