@@ -52,7 +52,7 @@ const Home = () => {
             <SpreadOperator />
             <Turnary />
             <MyCar model="Corsa" />
-            <Garage cars={cars} />
+            <Garage cars={cars} xx="xx" product={products[0]}/>
 
             <div>
                 Toplam {products.length} ürün listeleniyor

@@ -7,8 +7,7 @@ const MyCarUptatable = () => {
         model: "Mustang",
         year: "2022"
     });
-    console.log(car);
-
+     
     return (
         <div>
             <p>{"My car's brand is " + car.brand}</p>
@@ -46,7 +45,7 @@ const MyCarUptatable = () => {
                     () => setCar({
                         ...car,
                         brand: "Ford",
-                        model:"Focus"
+                        model: "Focus"
                     })
                 }>
                     Ford Focus yap
@@ -55,12 +54,12 @@ const MyCarUptatable = () => {
                     () => setCar({
                         ...car,
                         brand: "Fiat",
-                        model:"Egea"
+                        model: "Egea"
                     })
                 }>
                     Fiat Egea yap
                 </button>
-            
+
             </div>
         </div>
     );

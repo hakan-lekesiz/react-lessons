@@ -20,6 +20,12 @@ const Layout = () => {
                             {/* <a href="/contact">Contact</a> */}
                             <Link to="/contact">Contact</Link>
                         </li>
+                        <li>
+                            <Link to="/sayac">About</Link>
+                        </li>
+                        <li>
+                            <Link to="/personList">personList</Link>
+                        </li>
                     </ul>
                 </nav>
 
@@ -34,7 +40,9 @@ const Layout = () => {
             </header>
 
             <main>
-                <Outlet />
+                <div className="c-wrapper">
+                    <Outlet />
+                </div>
             </main>
 
             <footer>

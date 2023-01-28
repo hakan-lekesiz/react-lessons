@@ -44,11 +44,63 @@ body {
         gap: 12px;
 
         button {
-            background: red;
+            background: #c1c1c1;
             color: #FFF;
             padding: 8px;
             cursor: pointer;
 
+            &.active {
+                background-color: red;
+            }
+
         }
     }
+}
+
+.button-01 {
+    background: red;
+    color: #FFF;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    margin-right: 12px;
+}
+
+.per-list {
+    ul {
+        display: flex;
+        margin-bottom: 10px;
+
+        li {
+            width: 300px;
+        }
+
+        &:first-child{
+            li{
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.asc{
+    display: inline-block;
+    margin-left: 15px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.desc{
+    display: inline-block;
+    margin-left: 15px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }
