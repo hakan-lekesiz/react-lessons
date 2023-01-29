@@ -75,15 +75,15 @@ body {
             width: 300px;
         }
 
-        &:first-child{
-            li{
+        &:first-child {
+            li {
                 cursor: pointer;
             }
         }
     }
 }
 
-.asc{
+.asc {
     display: inline-block;
     margin-left: 15px;
     border: solid black;
@@ -94,7 +94,7 @@ body {
     -webkit-transform: rotate(-135deg);
 }
 
-.desc{
+.desc {
     display: inline-block;
     margin-left: 15px;
     border: solid black;
@@ -103,4 +103,38 @@ body {
     padding: 3px;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+}
+
+.car-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .car-details {
+        width: 32%;
+        background-color:aliceblue;
+        border-radius: 16px;
+        border: 1px solid #c1c1c1;
+        padding: 24px 24px 44px 24px;
+        margin-bottom: 16px;
+
+        button {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            color: red;
+            cursor: pointer;
+
+            &.select-car {
+                right: auto;
+                left: 24px;
+
+            }
+        }
+        &.active{
+            background-color: aqua;
+        }
+
+
+    }
 }

@@ -1,9 +1,8 @@
 import { Outlet, Link } from "react-router-dom";
 import { useState } from "react";
 
-const Layout = () => {
+const Layout = ({ selectedCar, setSelectedCar }) => {
     const [isUserLogin, setIsUserLogin] = useState(false);
-    console.log(isUserLogin);
 
     return (
         <>
@@ -31,6 +30,15 @@ const Layout = () => {
                         </li>
                     </ul>
                 </nav>
+
+                {
+                    selectedCar &&
+                    <div>
+                        seçilen araç = {selectedCar.brand + " " + selectedCar.model}
+
+                        <button onClick={() => setSelectedCar(null)}>Kaldır</button>
+                    </div>
+                }
 
                 {
                     !isUserLogin &&
