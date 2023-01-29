@@ -7,6 +7,7 @@ import Layout from "./pages/Layout";
 import Sayac from "./pages/Sayac";
 import NoPage from "./pages/NoPage";
 import PersonList from "./pages/PersonList";
+import CarList from "./pages/CarList";
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="contact" element={<Contact />} />
           <Route path="sayac" element={<Sayac />} />
           <Route path="personList" element={<PersonList />} />
+          <Route path="carList" element={<CarList />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

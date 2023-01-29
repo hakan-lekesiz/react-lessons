@@ -1,11 +1,13 @@
+import UseEffectTest from "../components/useEffect"
+import UseRefTest from "../components/useRef";
 
 
 const About = () => {
 
     return (
         <>
-            <div>About</div>
-          
+            <UseRefTest />
+            <UseEffectTest />
         </>
     );
 }
