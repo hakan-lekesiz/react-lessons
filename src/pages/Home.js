@@ -7,6 +7,7 @@ import Turnary from "../components/turnary";
 import Card from "../components/card";
 import MyCar from "../components/myCar";
 import Garage from "../components/garage";
+import A from "../components/A";
 
 const Home = () => {
     const products = [
@@ -45,6 +46,7 @@ const Home = () => {
 
     return (
         <>
+            <A />
             {/* <button onClick={(ev) => shoot(ev)}>Take the Shot!</button>
              */}
             <Map />
@@ -52,12 +54,12 @@ const Home = () => {
             <SpreadOperator />
             <Turnary />
             <MyCar model="Corsa" />
-            <Garage cars={cars} xx="xx" product={products[0]}/>
+            <Garage cars={cars} xx="xx" product={products[0]} />
 
             <div>
                 Toplam {products.length} ürün listeleniyor
             </div>
-            
+
             <div style={{ display: "flex", gap: "12px" }}>
                 {
                     products.map((product, index) => (
@@ -77,6 +79,7 @@ const Home = () => {
                 {myElement}
                 {myElement2}
             </div>
+
 
         </>
     );
