@@ -9,12 +9,15 @@ import NoPage from "./pages/NoPage";
 import PersonList from "./pages/PersonList";
 import CarList from "./pages/CarList";
 import { useState } from "react";
+import AuthLayout from "./pages/AuthLayout";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 
 const App = () => {
 
-  const [selectedCar,setSelectedCar] = useState(null);
- 
+  const [selectedCar, setSelectedCar] = useState(null);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -27,8 +30,15 @@ const App = () => {
           <Route path="carList" element={<CarList setSelectedCar={setSelectedCar} selectedCar={selectedCar}/>} />
           <Route path="*" element={<NoPage />} />
         </Route>
+
+        <Route path="/login" element={<AuthLayout/>}>
+          <Route index element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route>
+
       </Routes>
     </BrowserRouter>
+ 
   );
 }
 

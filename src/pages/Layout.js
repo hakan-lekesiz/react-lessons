@@ -1,5 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import { useState } from "react";
+import "../content/styles/Base.scss";
 
 const Layout = ({ selectedCar, setSelectedCar }) => {
     const [isUserLogin, setIsUserLogin] = useState(false);

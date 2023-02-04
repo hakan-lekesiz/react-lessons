@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import CarDetails from "../components/CarDetails"
+import { CarContext } from "../state/CarContext";
+ 
 
-const CarList = ({setSelectedCar,selectedCar}) => {
+
+
+
+const CarList = ({ setSelectedCar, selectedCar }) => {
     const [carList, setCarList] = useState();
+    const [carCount, setCarCount] = useState();
 
     useEffect(() => {
         if (localStorage.getItem("filteredCars")) {
@@ -16,6 +22,7 @@ const CarList = ({setSelectedCar,selectedCar}) => {
                 { brand: "Mercedes", model: "E200", year: "2005", id: "004" },
             ]);
         }
+        setCarCount(4);
     }, []);
 
     const deleteCar = (id) => {
@@ -26,13 +33,17 @@ const CarList = ({setSelectedCar,selectedCar}) => {
 
     return (
         <>
-            <div className="car-list">
-                {
-                    carList && carList.map((item) => (
-                        <CarDetails key={item.id} details={item} deleteCar={deleteCar} setSelectedCar={setSelectedCar} selectedCar={selectedCar}/>
-                    ))
-                }
-            </div>
+            <CarContext.Provider value={carCount}>
+
+                <div className="car-list">
+                    {
+                        carList && carList.map((item) => (
+                            <CarDetails key={item.id} details={item} deleteCar={deleteCar} setSelectedCar={setSelectedCar} selectedCar={selectedCar} />
+                        ))
+                    }
+                </div>
+                
+            </CarContext.Provider>
         </>
     );
 }
