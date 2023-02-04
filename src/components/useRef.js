@@ -8,7 +8,6 @@ const UseRefTest = () => {
     const buttonElement = useRef();
 
     const focusInput = () => {
-        debugger
         inputElement.current.focus();
         inputElement.current.style.background = Helper.Actions.getRandomColor();
     };

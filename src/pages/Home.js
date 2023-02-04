@@ -8,6 +8,9 @@ import Card from "../components/card";
 import MyCar from "../components/myCar";
 import Garage from "../components/garage";
 import A from "../components/A";
+import UseCallBackEx from "../components/useCallbackEx";
+import Form from "../components/Form";
+import { UseMemo } from "../components/useMemo";
 
 const Home = () => {
     const products = [
@@ -46,6 +49,12 @@ const Home = () => {
 
     return (
         <>
+            <Form />
+            <UseMemo />
+            <div style={{ background: "green", padding: "16px" }}>
+                useCallback example
+                <UseCallBackEx />
+            </div>
             <A />
             {/* <button onClick={(ev) => shoot(ev)}>Take the Shot!</button>
              */}

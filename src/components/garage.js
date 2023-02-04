@@ -1,6 +1,5 @@
 
 const Garage = (props) => {
-debugger
     //props.cars
     const { cars } = props;
 
