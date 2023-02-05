@@ -12,6 +12,7 @@ import { useState } from "react";
 import AuthLayout from "./pages/AuthLayout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import PersonListCrud from "./pages/PersonListCrud";
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/" element={<Layout selectedCar={selectedCar} setSelectedCar={setSelectedCar}/>}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
+          <Route path="personListCrud" element={<PersonListCrud />} />
           <Route path="contact" element={<Contact />} />
           <Route path="sayac" element={<Sayac />} />
           <Route path="personList" element={<PersonList />} />

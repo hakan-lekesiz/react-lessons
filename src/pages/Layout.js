@@ -27,6 +27,9 @@ const Layout = ({ selectedCar, setSelectedCar }) => {
                             <Link to="/personList">personList</Link>
                         </li>
                         <li>
+                            <Link to="/personListCrud">personListCrud</Link>
+                        </li>
+                        <li>
                             <Link to="/carList">carList</Link>
                         </li>
                     </ul>

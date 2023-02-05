@@ -6,59 +6,76 @@ const Form = () => {
         firstname: "",
         lastname: "",
         age: "",
-        password:"",
-        cookie:false
+        password: "",
+        cookie: false
     });
 
+    const [formSubmitted, setFormSubmitted] = useState(false);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
-        if (formData.firstname === "") {
-            alert("Adınız boş geçilemez");
+        setFormSubmitted(true);
+
+        if (formData.firstname && formData.lastname && formData.age && formData.password && formData.cookie) {
+            debugger
+            //form başarılı bir şekilde doldurulduysa burda ilerleyecez
+            //servera istek atılacak formData objesi gönderilecek
         }
-        else if (formData.lastname === "") {
-            alert("Soyadınız boş geçilemez");
-        }
-        else if (formData.age === "") {
-            alert("Yaşınız boş geçilemez");
-        }
+        // else {
+        //     //form validasyonu geçemediyse return edecez
+        //     return;
+        // }
+
     };
 
     const handleInputChange = (e) => {
-        debugger
-        if (e.target.type ==="checkbox") {
+        if (e.target.type === "checkbox" || e.target.type === "radio") {
             setFormData({
                 ...formData,
                 [e.target.name]: e.target.checked
             });
         }
-        else{
+        else {
             setFormData({
                 ...formData,
                 [e.target.name]: e.target.value
             });
         }
-     
+
     };
 
     return (
         <form style={{ background: "#c1c1c1", padding: "16px" }} onSubmit={handleFormSubmit} autocomplete="off">
-            <div>
+
+            <div className={formSubmitted && formData.firstname === "" ? "error" : ""}>
                 <label>Adınız</label> <br />
                 <input type="text"
                     value={formData.firstname} name="firstname"
                     onChange={handleInputChange} />
+
+                {
+                    formSubmitted && formData.firstname === "" &&
+                    <div>Zorunlu Alan</div>
+                }
+
             </div>
-            <div>
+
+            <hr />
+
+            <div className={formSubmitted && formData.lastname === "" ? "error" : ""}>
                 <label>Soyadınız</label> <br />
-                <input type="text"  autocomplete="new-password"
+                <input type="text" autocomplete="new-password"
                     value={formData.lastname} name="lastname"
                     onChange={handleInputChange} />
+                {
+                    formSubmitted && formData.lastname === "" &&
+                    <div>Zorunlu Alan</div>
+                }
             </div>
-            <div>
+            <hr />
+            <div className={formSubmitted && formData.age === "" ? "error" : ""}>
                 <label>Yaşınız</label> <br />
-                <select value={formData.age} name="age" 
+                <select value={formData.age} name="age"
                     onChange={handleInputChange}>
                     <option value=""></option>
                     <option value="30">30</option>
@@ -66,17 +83,32 @@ const Form = () => {
                     <option value="50">50</option>
                     <option value="60">60</option>
                 </select>
+                {
+                    formSubmitted && formData.age === "" &&
+                    <div>Zorunlu Alan</div>
+                }
             </div>
-            <div>
+            <hr />
+            <div className={formSubmitted && formData.password === "" ? "error" : ""}>
                 <label>password</label> <br />
-                <input type="password"   autocomplete="new-password"
+                <input type="password" autocomplete="new-password"
                     value={formData.password} name="password"
                     onChange={handleInputChange} />
+                {
+                    formSubmitted && formData.password === "" &&
+                    <div>Zorunlu Alan</div>
+                }
             </div>
-            <div>
+            <hr />
+            <div className={formSubmitted && !formData.cookie ? "error" : ""}>
                 <label>Accept Cookies</label>
-                <input type="checkbox" name="cookie" onChange={handleInputChange}/>
+                <input type="checkbox" name="cookie" onChange={handleInputChange} />
+                {
+                    formSubmitted && !formData.cookie &&
+                    <div>Zorunlu Alan</div>
+                }
             </div>
+            <hr />
 
             <div>
                 <button type="submit">Gönder</button>

@@ -48,5 +48,7 @@ input[type=number] {
 }
 
 hr {
-    height: 0
+    height: 1px;
+    background: black;
+    margin: 16px 0;
 }
