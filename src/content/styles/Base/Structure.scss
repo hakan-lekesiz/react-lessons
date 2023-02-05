@@ -239,3 +239,16 @@ body {
         .body {}
     }
 }
+
+.removePersonButtons{
+    display: flex;
+    justify-content: flex-end;
+    gap:16px;
+    margin-top: 100px;
+    button{
+        padding: 16px;
+        background-color: #c1c1c1;
+        border-radius: 12px;
+    }
+
+}

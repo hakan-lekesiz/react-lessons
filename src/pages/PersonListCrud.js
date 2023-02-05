@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "../components/modal";
 
 const initialFormData = {
@@ -16,6 +16,7 @@ const PersonListCrud = () => {
     const [list, setList] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [removedPersonId, setRemovedPersonId] = useState("");
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -23,8 +24,7 @@ const PersonListCrud = () => {
 
         if (formData.firstname && formData.lastname && formData.age && formData.job && formData.income) {
             debugger
-            //form başarılı bir şekilde doldurulduysa burda ilerleyecez
-            //servera istek atılacak formData objesi gönderilecek
+            //form başarılı bir şekilde doldurulduysa burdan ilerleyecez
             if (formData.id === "") {
                 //ekleme işlemi yapılacak
                 setList([
@@ -34,22 +34,24 @@ const PersonListCrud = () => {
                         id: list.length
                     }
                 ]);
-
             }
             else {
                 //editleme işlemi yapılacak
+                let _list = [...list];
+                const index = list.findIndex(x => x.id === formData.id);
+                _list[index] = formData;
+                setList(_list);
+
+                //güncellenen kişiyi en sona attığı için kullanmadık
+                // setList([
+                //     ...list.filter(x=>x.id !== formData.id),
+                //     formData
+                // ]);
             }
-            
-            setShowModal(false); 
+
+            setShowModal(false);
             resetForm();
-
-
         }
-        // else {
-        //     //form validasyonu geçemediyse return edecez
-        //     return;
-        // }
-
 
     };
 
@@ -74,6 +76,25 @@ const PersonListCrud = () => {
         setFormSubmitted(false);
     };
 
+    const removePerson = () => {
+        setList([
+            ...list.filter(x => x.id !== removedPersonId)
+        ]);
+        setShowDeleteModal(false);
+    };
+
+    useEffect(() => {
+        if (list.length > 0) {
+            localStorage.setItem("personList", JSON.stringify(list));
+        }
+    }, [list]);
+
+    useEffect(() => {
+        if (localStorage.getItem("personList")) {
+            setList(JSON.parse(localStorage.getItem("personList")));
+        }
+    }, []);
+
     return (
         <>
             <div className="person-list-crud">
@@ -91,7 +112,7 @@ const PersonListCrud = () => {
                         <li className="job">Meslek</li>
                         <li>Yaş</li>
                         <li>Gelir</li>
-                        <li>İşlemler</li>
+                        <li>Aksiyonlar</li>
                     </ul>
 
                     {
@@ -103,8 +124,14 @@ const PersonListCrud = () => {
                                 <li>{person.age}</li>
                                 <li>{person.income}</li>
                                 <li>
-                                    <a href="#">Düzenle</a>
-                                    <a href="#">Sil</a>
+                                    <a href="#" onClick={() => {
+                                        setShowModal(true);
+                                        setFormData(person);
+                                    }}>Düzenle</a>
+                                    <a onClick={() => {
+                                        setShowDeleteModal(true);
+                                        setRemovedPersonId(person.id);
+                                    }} href="#">Sil</a>
                                 </li>
                             </ul>
                         ))
@@ -116,13 +143,13 @@ const PersonListCrud = () => {
                         </div>
                     }
 
-
                 </div>
             </div>
             {
                 showModal &&
                 <Modal closeModal={() => { setShowModal(false); resetForm(); }}>
                     <form onSubmit={handleFormSubmit}>
+
                         <div className={formSubmitted && formData.firstname === "" ? "error" : ""}>
                             <label>
                                 Adınız
@@ -134,6 +161,7 @@ const PersonListCrud = () => {
                             }
 
                         </div>
+
                         <hr />
                         <div className={formSubmitted && formData.lastname === "" ? "error" : ""}>
                             <label>
@@ -196,8 +224,16 @@ const PersonListCrud = () => {
                 <Modal closeModal={() => setShowDeleteModal(false)}>
                     <div>
                         <h3>
-                            Kişiyi silmek istediğinizden eminmisin
+                            Kişiyi silmek istediğinizden emin misin?
                         </h3>
+                        <div className="removePersonButtons">
+                            <button onClick={removePerson}>Evet</button>
+                            <button onClick={() => {
+                                setShowDeleteModal(false);
+                                setRemovedPersonId("")
+                            }
+                            }>Hayır</button>
+                        </div>
                     </div>
                 </Modal>
             }
